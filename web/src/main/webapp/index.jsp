@@ -27,6 +27,5 @@
             </tr>
         <%}%>
     </table>
-    <p><% users.size(); %></p>
 </body>
 </html>
