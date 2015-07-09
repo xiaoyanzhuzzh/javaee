@@ -25,7 +25,6 @@ public class HelloServlet extends HttpServlet {
         String email = req.getParameter("email");
 
         User user = new User(name,gender,age,email);
-        System.out.println(user);
         new Service().createUser(user);
         res.sendRedirect("/web/hello");
     }

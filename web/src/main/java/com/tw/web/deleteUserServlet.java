@@ -15,7 +15,6 @@ public class DeleteUserServlet extends HttpServlet{
 
         int id = new Integer(req.getParameter("id"));
 
-        System.out.print(id);
         Service service = new Service();
         service.deleteUserById(id);
 
