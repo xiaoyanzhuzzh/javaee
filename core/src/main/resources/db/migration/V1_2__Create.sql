@@ -12,4 +12,4 @@ create table users (
 );
 
 
-insert into users values(null,'张志慧','女',22,'zhzhang1993@outlook.com');
+insert into users values(null,'张志慧','female',22,'zhzhang1993@outlook.com');
