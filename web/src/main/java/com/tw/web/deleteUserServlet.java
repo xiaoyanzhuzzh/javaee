@@ -13,14 +13,20 @@ import java.util.List;
 public class DeleteUserServlet extends HttpServlet{
     public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+
         int id = new Integer(req.getParameter("id"));
 
         Service service = new Service();
         service.deleteUserById(id);
 
         List<User> users = service.getUsers();
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("index.jsp").forward(req, res);
+//
+//        req.setAttribute("users", users);
+        System.out.print(users.size() + "============");
+
+        res.sendRedirect("/web/hello");
+
+//        req.getRequestDispatcher("index.jsp").forward(req, res);
     }
 
 }

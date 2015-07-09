@@ -10,7 +10,7 @@ import com.tw.core.service.Service;
 
 public class HelloServlet extends HttpServlet {
     public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+System.out.print("=========");
         Service service = new Service();
         List<User> users = service.getUsers();
         req.setAttribute("users", users);

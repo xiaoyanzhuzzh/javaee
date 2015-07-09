@@ -1,6 +1,5 @@
 use user_management;
 
-drop table users;
 
 create table users (
   id int(11) NOT NULL auto_increment,
