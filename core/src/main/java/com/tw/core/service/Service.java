@@ -6,15 +6,37 @@ import com.tw.core.dao.UserDao;
 import java.util.List;
 
 public class Service {
+    public UserDao userDao = new UserDao();
+
     public String service() {
         return "Hello World";
     }
 
+    public User getUserById(int id) {
+
+        return userDao.getUserById(id);
+    }
+
     public List<User> getUsers() {
 
-        UserDao userDao = new UserDao();
         return userDao.getUsers();
     }
+
+    public void createUser(User user) {
+
+        userDao.createUser(user);
+    }
+
+    public void deleteUserById(int id) {
+
+        userDao.deleteUserById(id);
+    }
+
+    public void updateUser(User user) {
+
+        userDao.updateUser(user);
+    }
+
 
     public static void main(String[] args) {
         System.out.print(new Service().getUsers());

@@ -1,13 +1,13 @@
 package com.tw.core.entity;
 
 public class User {
-    private String id;
+    private int id;
     private String name;
     private String gender;
     private int age;
     private String email;
 
-    public User(String id, String name, String gender, int age, String email) {
+    public User(int id, String name, String gender, int age, String email) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -15,7 +15,14 @@ public class User {
         this.email = email;
     }
 
-    public String getId(){
+    public User(String name, String gender, int age, String email) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.email = email;
+    }
+
+    public int getId(){
         return this.id;
     }
 

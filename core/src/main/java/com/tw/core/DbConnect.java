@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class DbConnect {
     private String driverName = "com.mysql.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/user_management";
+    private String url = "jdbc:mysql://localhost:3306/user_management?useUnicode=true&&characterEncoding=utf-8";
     private String userName = "root";
     private String password = "";
 

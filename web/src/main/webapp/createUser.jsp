@@ -1,16 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zhihuizhang
-  Date: 7/8/15
-  Time: 4:30 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title></title>
+    <title>添加新用户</title>
 </head>
 <body>
-
+    <form action="/web/hello" method="post">
+        姓名:<input type="text" name="name"><br>
+        性别:
+        <label><input name="gender" type="radio" value=female>female</label>
+        <label><input name="gender" type="radio" value=male>male</label><br>
+        年龄:<input type="text" name="age"><br>
+        邮箱:<input type="email" name="email"><br>
+        <input type="submit" value="添加">
+    </form>
 </body>
 </html>
