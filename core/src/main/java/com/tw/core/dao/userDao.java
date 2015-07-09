@@ -78,8 +78,6 @@ public class UserDao {
             prepareStatement.setInt(3, user.getAge());
             prepareStatement.setString(4, user.getEmail());
 
-            System.out.println(prepareStatement);
-
             int rows = prepareStatement.executeUpdate();
             if(rows > 0) {
                 System.out.println("插入成功!");
