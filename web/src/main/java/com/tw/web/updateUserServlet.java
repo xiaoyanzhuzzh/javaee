@@ -25,13 +25,7 @@ public class UpdateUserServlet extends HttpServlet {
         int id = new Integer(req.getParameter("id"));
         String name = req.getParameter("name");
         String gender = req.getParameter("gender");
-        if(gender.equals("female")) {
-            gender = "女";
-        } else if (gender.equals("male")) {
-            gender = "男";
-        } else {
-            gender = null;
-        }
+
         int age = new Integer(req.getParameter("age"));
         String email = req.getParameter("email");
 

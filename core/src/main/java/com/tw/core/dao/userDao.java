@@ -68,29 +68,8 @@ public class UserDao {
     }
 
     public void createUser(User user){
-//        String sql = "insert into users(name, gender, age, email) values(?,?,?,?)";
-
-//        String sql = "insert into users values(null, '"+user.getName()+
-//                "','"+user.getGender()+"',"+user.getAge()+", '"+user.getEmail()+"')";
-//        Connection connection = dbConnect.getConnection();
-//        Statement statement = null;
-//        try {
-//            statement = connection.createStatement();
-//            int result = statement.executeUpdate(sql);
-//            if(result > 0){
-//                System.out.println("插入成功");
-//            }
-//            else{
-//                System.out.println("插入失败");
-//            }
-//            statement.close();
-//            dbConnect.closeConnection();
-//        }catch (SQLException e) {
-//            e.printStackTrace();
-//        }
 
         Connection connection = dbConnect.getConnection();
-
         String sql = "insert into users(name, gender, age, email) values(?, ?, ?, ?)";
         try {
             prepareStatement = connection.prepareStatement(sql);
@@ -112,14 +91,6 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    public static void main(String[] args) {
-        User user = new User("hhahhah", "男", 56, "123Q@qq.com");
-
-        UserDao userDao = new UserDao();
-        userDao.createUser(user);
-        userDao.getUsers();
-
     }
 
     public void deleteUserById(int id){
