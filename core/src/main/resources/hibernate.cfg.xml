@@ -29,7 +29,8 @@
         <property name="show_sql"
                 >true</property>
 
-        <mapping resource="user.hbm.xml"/>
+        <!--<mapping resource="User.hbm.xml"/>-->
+        <mapping class="com.tw.core.entity.User"/>
 
     </session-factory>
 

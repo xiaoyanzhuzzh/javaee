@@ -1,10 +1,25 @@
 package com.tw.core.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "age")
     private int age;
+
+    @Column(name = "email")
     private String email;
 
     public User() {
