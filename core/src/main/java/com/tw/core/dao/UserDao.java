@@ -61,5 +61,7 @@ public class UserDao {
         session.close();
     }
 
-
+  public static void main(String[] args){
+      System.out.print(new UserDao().getUserById(1));
+  }
 }
