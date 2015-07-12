@@ -23,6 +23,6 @@
             </tr>
         </c:forEach>
     </table>
-    <div><a href="./createUser.jsp">添加用户</a></div>
+    <div><a href="createUser.jsp">添加用户</a></div>
 </body>
 </html>

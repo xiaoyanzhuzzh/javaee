@@ -5,7 +5,7 @@ import com.tw.core.dao.UserDao;
 
 import java.util.List;
 
-public class Service {
+public class UserService {
     public UserDao userDao = new UserDao();
 
     public String service() {
