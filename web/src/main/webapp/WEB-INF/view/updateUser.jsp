@@ -6,8 +6,8 @@
     <title></title>
 </head>
 <body>
-    <form action="/web/updateUser" method="post">
-        <input type="hidden" value="${user.id}" name="id"><br>
+    <form action="" method="post">
+        <input value="${user.id}" name="id"><br>
         姓名:<input type="text" value="${user.name}" name="name"><br>
         性别:
         <c:if test ="${user.gender == 'male'}">

@@ -4,7 +4,7 @@
     <title>添加新用户</title>
 </head>
 <body>
-    <form action="/web/hello" method="post">
+    <form action="" method="post">
         姓名:<input type="text" name="name"><br>
         性别:
         <label><input name="gender" type="radio" value=female>female</label>

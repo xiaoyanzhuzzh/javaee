@@ -18,11 +18,11 @@
                 <td>${user.gender}</td>
                 <td>${user.age}</td>
                 <td>${user.email}</td>
-                <td><a href="/web/deleteUser?id=${user.id}">删除</a></td>
-                <td><a href="/web/updateUser?id=${user.id}">修改</a></td>
+                <td><a href="./deleteUser?id=${user.id}">删除</a></td>
+                <td><a href="./updateUser?id=${user.id}">修改</a></td>
             </tr>
         </c:forEach>
     </table>
-    <div><a href="createUser.jsp">添加用户</a></div>
+    <div><a href="./createUser">添加用户</a></div>
 </body>
 </html>
