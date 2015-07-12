@@ -1,7 +1,7 @@
 package com.tw.web;
 
 import com.tw.core.entity.User;
-import com.tw.core.service.Service;
+import com.tw.core.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +16,7 @@ public class DeleteUserServlet extends HttpServlet{
 
         int id = new Integer(req.getParameter("id"));
 
-        Service service = new Service();
+        UserService service = new UserService();
         service.deleteUserById(id);
 
         List<User> users = service.getUsers();

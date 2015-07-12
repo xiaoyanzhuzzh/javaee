@@ -6,12 +6,12 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 
 import com.tw.core.entity.User;
-import com.tw.core.service.Service;
+import com.tw.core.service.UserService;
 
 public class HelloServlet extends HttpServlet {
     public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 System.out.print("=========");
-        Service service = new Service();
+        UserService service = new UserService();
         List<User> users = service.getUsers();
         req.setAttribute("users", users);
         req.getRequestDispatcher("index.jsp").forward(req, res);
@@ -25,7 +25,7 @@ System.out.print("=========");
         String email = req.getParameter("email");
 
         User user = new User(name,gender,age,email);
-        new Service().createUser(user);
+        new UserService().createUser(user);
         res.sendRedirect("/web/hello");
     }
 }

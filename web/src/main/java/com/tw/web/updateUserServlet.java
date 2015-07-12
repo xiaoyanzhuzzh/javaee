@@ -1,7 +1,7 @@
 package com.tw.web;
 
 import com.tw.core.entity.User;
-import com.tw.core.service.Service;
+import com.tw.core.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ public class UpdateUserServlet extends HttpServlet {
     public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         int id = new Integer(req.getParameter("id"));
-        Service service = new Service();
+        UserService service = new UserService();
         req.setAttribute("user", service.getUserById(id));
 
         req.getRequestDispatcher("updateUser.jsp").forward(req, res);
@@ -30,7 +30,7 @@ public class UpdateUserServlet extends HttpServlet {
         String email = req.getParameter("email");
 
         User user = new User(id,name,gender,age,email);
-        new Service().updateUser(user);
+        new UserService().updateUser(user);
         res.sendRedirect("/web/hello");
     }
 }
