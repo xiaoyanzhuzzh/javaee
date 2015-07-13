@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value= "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getAllUsers(){
 
         ModelAndView modelAndView = new ModelAndView();
@@ -43,7 +43,7 @@ public class UserController {
 
         User user = new User(name, gender, age, email);
         userService.createUser(user);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
@@ -51,7 +51,7 @@ public class UserController {
 
         userService.deleteUserById(id);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/users");
     }
 
     @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
@@ -74,6 +74,6 @@ public class UserController {
         User user = new User(id, name, gender, age, email);
         userService.updateUser(user);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/users");
     }
 }
