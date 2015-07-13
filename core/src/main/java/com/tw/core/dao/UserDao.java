@@ -43,7 +43,8 @@ public class UserDao {
 
         session.beginTransaction();
 
-        session.delete(this.getUserById(id));
+        User user = (User) session.load(User.class, id);
+        session.delete(user);
 
         session.getTransaction().commit();
         session.close();

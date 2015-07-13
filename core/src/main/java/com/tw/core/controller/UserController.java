@@ -26,7 +26,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView getCreateUserPage(){
 
         ModelAndView modelAndView = new ModelAndView();
@@ -35,7 +35,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView createUser(@RequestParam String name,
                                    @RequestParam String gender,
                                    @RequestParam int age,
@@ -46,7 +46,7 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView deleteUser(@RequestParam int id){
 
         userService.deleteUserById(id);
@@ -54,7 +54,7 @@ public class UserController {
         return new ModelAndView("redirect:/users");
     }
 
-    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     public ModelAndView getUpdateUserAge(@RequestParam int id){
         User user = userService.getUserById(id);
 
@@ -65,7 +65,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView UpdateUser(@RequestParam int id,
                                    @RequestParam String name,
                                    @RequestParam String gender,

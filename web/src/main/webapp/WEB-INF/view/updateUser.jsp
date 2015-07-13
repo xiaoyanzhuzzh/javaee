@@ -24,15 +24,23 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Gender</label>
                     <c:if test="${user.gender == 'male'}">
-                        <div class="col-sm-4" id="gender">
-                            <input class="gender" name="gender" type="radio" value="female">female
-                            <input class="gender" name="gender" type="radio" value="male">male
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio" name="gender"  value="female"> female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="gender"  value="male" checked> male
+                            </label>
                         </div>
                     </c:if>
                     <c:if test="${user.gender == 'female'}">
-                        <div class="col-sm-4" id="gender">
-                            <input class="gender" name="gender" type="radio" value="female" checked>female
-                            <input class="gender" name="gender" type="radio" value="male">male
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio" name="gender"  value="female" checked> female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="gender"  value="male"> male
+                            </label>
                         </div>
                     </c:if>
                 </div>
