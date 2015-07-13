@@ -10,8 +10,13 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
+//    @Autowired
     private UserDao userDao;
+
+    @Autowired
+    public  UserService(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public User getUserById(int id) {
 
