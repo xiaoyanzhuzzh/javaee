@@ -43,4 +43,8 @@ public class UserService {
         userDao.updateUser(user);
     }
 
+    public Boolean verifyUserInfo(String name, String password) {
+
+        return userDao.verifyUserInfo(name, password);
+    }
 }
