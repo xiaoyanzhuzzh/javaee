@@ -20,9 +20,13 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Gender</label>
-                    <div class="col-sm-4" id="gender">
-                        <input class="gender" name="gender" type="radio" value=female>female
-                        <input class="gender" name="gender" type="radio" value=male>male
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            <input type="radio" name="gender"  value="female"> female
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender"  value="male"> male
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
