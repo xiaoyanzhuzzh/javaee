@@ -10,12 +10,28 @@
 <body>
     <div class="jumbotron">
         <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Panel title</h3>
-                </div>
-                <div class="panel-body">
-                    Panel content
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form class="form-horizontal" action="/web/login" method="post">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Password:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Login</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
