@@ -1,28 +1,45 @@
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>Javaee</title>
+    <title>Javaee首页</title>
+    <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss" />
+    <link href="${bootstrapCss}" rel="stylesheet" />
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td>姓名</td>
-            <td>性别</td>
-            <td>年龄</td>
-            <td>邮箱</td>
-        </tr>
-        <c:forEach items="${users}" var="user">
-            <tr>
-                <td>${user.name}</td>
-                <td>${user.gender}</td>
-                <td>${user.age}</td>
-                <td>${user.email}</td>
-                <td><a href="./deleteUser?id=${user.id}">删除</a></td>
-                <td><a href="./updateUser?id=${user.id}">修改</a></td>
-            </tr>
-        </c:forEach>
-    </table>
-    <div><a href="./createUser">添加用户</a></div>
+    <div class="jumbotron">
+        <div class="container">
+            <div><a href="./createUser">addUser</a></div>
+            <table class="table table-bordered">
+                <caption><h2>用户信息表</h2></caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${users}" var="user">
+                        <tr>
+                            <td>${user.name}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.age}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <a href="./deleteUser?id=${user.id}">delete</a>
+                                <a href="./updateUser?id=${user.id}">update</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%--<spring:url value="/lib/js/bootstrap.min.js" var="bootstrapJs" />--%>
+    <%--<script src="${bootstrapJs}"></script>--%>
 </body>
 </html>
