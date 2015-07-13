@@ -13,7 +13,7 @@
 <body>
     <div class="jumbotron">
         <div class="container">
-            <form class="form-horizontal" action="" method="post">
+            <form class="form-horizontal" action="/web/users/update" method="post">
                 <input type="hidden" value="${user.id}" name="id"><br>
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Name</label>

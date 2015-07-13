@@ -11,7 +11,7 @@
 <body>
     <div class="jumbotron">
         <div class="container">
-            <form class="form-horizontal" action="" method="post">
+            <form class="form-horizontal" action="/web/users/create" method="post">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-4">
@@ -22,23 +22,23 @@
                     <label class="col-sm-2 control-label">Gender</label>
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                            <input type="radio" name="gender"  value="female"> female
+                            <input type="radio" name="gender" value="female"> female
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender"  value="male"> male
+                            <input type="radio" name="gender" value="male"> male
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Age</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="age" name="age" placeholder="age">
+                        <input type="text" class="form-control" id="age" name="age" placeholder="Age">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-4">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
