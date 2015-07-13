@@ -4,44 +4,37 @@
 <head>
     <title>添加新用户</title>
     <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss" />
+    <spring:url value="/lib/css/createUser.css" var="createUserCss" />
     <link href="${bootstrapCss}" rel="stylesheet" />
+    <link href="${createUserCss}" rel="stylesheet" />
 </head>
 <body>
     <div class="jumbotron">
         <div class="container">
-            <div><label for="">添加新用户</label></div>
-            <form action="" method="post">
-                姓名:<input type="text" name="name"><br>
-                性别:
-                <label><input name="gender" type="radio" value=female>female</label>
-                <label><input name="gender" type="radio" value=male>male</label><br>
-                年龄:<input type="text" name="age"><br>
-                邮箱:<input type="email" name="email"><br>
-                <input type="submit" value="添加">
-            </form>
             <form class="form-horizontal" action="" method="post">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="gender" class="col-sm-2 control-label">Gender</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="gender" placeholder="gender">
+                    <label class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-4" id="gender">
+                        <input class="gender" name="gender" type="radio" value=female>female
+                        <input class="gender" name="gender" type="radio" value=male>male
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Age</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="age" placeholder="age">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="age" name="age" placeholder="age">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="email">
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="email">
                     </div>
                 </div>
                 <div class="form-group">
