@@ -2,6 +2,8 @@ package com.tw.core.dao;
 
 import com.tw.core.entity.User;
 import com.tw.core.util.HibernateUtil;
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -60,5 +62,26 @@ public class UserDao {
         session.close();
     }
 
+    public Boolean verifyUserInfo(String name, String password) {
+        Boolean result = false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
+        String hql = "from User where name=? and password=?";
+        Query query = session.createQuery(hql);
+
+        query.setString(0, name);
+        query.setString(1, password);
+
+        List<User> users = query.list();
+        if(users.size() == 1) {
+            result = true;
+        }
+        session.close();
+
+        return result;
+    }
+
+//    public static void main(String[] args) {
+//        Boolean result = new UserDao().verifyUserInfo("张志慧", "123456");
+//    }
 }
