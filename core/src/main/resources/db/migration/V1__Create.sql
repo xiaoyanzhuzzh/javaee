@@ -1,10 +1,9 @@
 use user_management;
-
-
+drop table users;
+drop table admin;
 create table users (
   id int(11) NOT NULL auto_increment,
   name varchar(30) NOT NULL,
-  password varchar(50) NOT NULL,
   gender varchar(10) NOT NULL,
   age int(6) NOT NULL,
   email varchar(40) default NULL,
@@ -12,4 +11,14 @@ create table users (
 );
 
 
-insert into users values(null,'张志慧','123456','female',22,'zhzhang1993@outlook.com');
+insert into users values(null,'张志慧','female',22,'zhzhang1993@outlook.com');
+
+create table admin (
+  id int(11) NOT NULL auto_increment,
+  name varchar(30) NOT NULL,
+  password varchar(50) NOT NULL,
+  PRIMARY KEY  (id)
+);
+
+insert into admin values(null,'张志慧','123456');
+
