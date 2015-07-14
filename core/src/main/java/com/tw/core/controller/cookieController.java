@@ -1,6 +1,7 @@
 package com.tw.core.controller;
 
 import com.tw.core.helper.CookieHelper;
+import com.tw.core.service.AdminService;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/")
 public class cookieController {
     @Autowired
-    private UserService userService;
+    private AdminService adminService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getLoginPage(HttpServletRequest request){
@@ -32,7 +33,7 @@ public class cookieController {
                               @RequestParam String password,
                               HttpServletResponse response){
 
-        if(userService.verifyUserInfo(name, password)) {
+        if(adminService.verifyAdminInfo(name, password)) {
 
             CookieHelper.saveCookie("currentUser", name, response);
             return new ModelAndView("redirect:/users/");
