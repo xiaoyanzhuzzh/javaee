@@ -1,10 +1,13 @@
 package com.tw.core.controller;
 
 import com.tw.core.entity.User;
+import com.tw.core.helper.CookieHelper;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/users")
@@ -13,23 +16,28 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAllUsers(){
+    public ModelAndView getAllUsers(HttpServletRequest request){
 
-        ModelAndView modelAndView = new ModelAndView();
+        if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-        modelAndView.setViewName("index");
-        modelAndView.addObject("users", userService.getUsers());
+            return new ModelAndView("login", "loginFailMessage", "");
+        } else {
 
-        return modelAndView;
+            return new ModelAndView("index", "users", userService.getUsers());
+        }
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(){
+    public ModelAndView getCreateUserPage(HttpServletRequest request){
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("createUser");
+        if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-        return modelAndView;
+            return new ModelAndView("login", "loginFailMessage", "");
+        } else {
+
+//            return new ModelAndView("redirect:/users/");
+            return new ModelAndView("createUser");
+        }
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -52,14 +60,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(@PathVariable int id){
+    public ModelAndView getUpdateUserAge(@PathVariable int id, HttpServletRequest request){
         User user = userService.getUserById(id);
 
-        ModelAndView modelAndView = new ModelAndView();
+        if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-        modelAndView.setViewName("updateUser");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+            return new ModelAndView("login", "loginFailMessage", "");
+        } else {
+
+//            return new ModelAndView("redirect:/users/");
+            return new ModelAndView("updateUser", "user", user);
+        }
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
