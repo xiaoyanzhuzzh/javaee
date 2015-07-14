@@ -11,9 +11,13 @@
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <label>
+                        ${loginFailMessage}
+                    </label>
+                </div>
                 <div class="col-md-8">
-                    <form class="form-horizontal" action="/web/login" method="post">
+                    <form class="form-horizontal" action="" method="post">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Name:</label>
                             <div class="col-sm-4">
