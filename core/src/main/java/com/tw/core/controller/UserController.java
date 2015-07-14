@@ -20,7 +20,7 @@ public class UserController {
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-            return new ModelAndView("login", "loginFailMessage", "");
+            return new ModelAndView("redirect:/");
         } else {
 
             return new ModelAndView("index", "users", userService.getUsers());
@@ -32,10 +32,10 @@ public class UserController {
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-            return new ModelAndView("login", "loginFailMessage", "");
+            return new ModelAndView("redirect:/");
+
         } else {
 
-//            return new ModelAndView("redirect:/users/");
             return new ModelAndView("createUser");
         }
     }
@@ -48,7 +48,7 @@ public class UserController {
 
         User user = new User(name, gender, age, email);
         userService.createUser(user);
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users/");
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class UserController {
 
         userService.deleteUserById(id);
 
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users/");
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
@@ -65,10 +65,9 @@ public class UserController {
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-            return new ModelAndView("login", "loginFailMessage", "");
+            return new ModelAndView("redirect:/");
         } else {
 
-//            return new ModelAndView("redirect:/users/");
             return new ModelAndView("updateUser", "user", user);
         }
     }
@@ -82,6 +81,6 @@ public class UserController {
         User user = new User(id, name, gender, age, email);
         userService.updateUser(user);
 
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users/");
     }
 }

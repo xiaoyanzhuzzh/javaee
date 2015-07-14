@@ -39,7 +39,6 @@ public class cookieController {
             return new ModelAndView("redirect:/users/");
         } else {
 
-//            return new ModelAndView("login", "loginFailMessage", "Incorrect name and password,please enter again!");
             return new ModelAndView("redirect:/");
         }
     }
@@ -49,7 +48,5 @@ public class cookieController {
 
         CookieHelper.deleteCookie("currentUser", response);
         return new ModelAndView("redirect:/");
-//        return new ModelAndView("login", "loginFailMessage", "Please Login");
-
     }
 }
