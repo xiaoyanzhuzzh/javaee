@@ -16,27 +16,23 @@ public class cookieController {
     private AdminService adminService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getLoginPage(HttpServletRequest request){
-
-        if(CookieHelper.getCookieValue("currentUser", request) == null){
+    public ModelAndView getLoginPage(){
 
             return new ModelAndView("login", "loginFailMessage", "");
-        } else {
-
-            String previous = CookieHelper.getCookieValue("previousUrl", request);
-            return new ModelAndView("redirect:" + previous);
-        }
     }
 
     @RequestMapping(value="/", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam String name,
                               @RequestParam String password,
-                              HttpServletResponse response){
+                              HttpServletResponse response,
+                              HttpServletRequest request){
 
         if(adminService.verifyAdminInfo(name, password)) {
 
             CookieHelper.saveCookie("currentUser", name, response);
-            return new ModelAndView("redirect:/users/");
+
+            String previousUrl = CookieHelper.getCookieValue("previousUrl", request);
+            return new ModelAndView("redirect:/" + previousUrl);
         } else {
 
             return new ModelAndView("redirect:/");

@@ -21,7 +21,7 @@ public class UserController {
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-            CookieHelper.saveCookie("previousUrl", "/users/", response);
+            CookieHelper.saveCookie("previousUrl", "users/", response);
             return new ModelAndView("redirect:/");
         } else {
 
@@ -31,14 +31,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView getCreateUserPage(HttpServletRequest request){
+    public ModelAndView getCreateUserPage(HttpServletRequest request, HttpServletResponse response){
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
+            CookieHelper.saveCookie("previousUrl", "users/create", response);
             return new ModelAndView("redirect:/");
-
         } else {
 
+            CookieHelper.deleteCookie("previousUrl", response);
             return new ModelAndView("createUser");
         }
     }
@@ -63,14 +64,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getUpdateUserAge(@PathVariable int id, HttpServletRequest request){
+    public ModelAndView getUpdateUserAge(@PathVariable int id,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response){
         User user = userService.getUserById(id);
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
+            CookieHelper.saveCookie("previousUrl", "users/update/" + id, response);
             return new ModelAndView("redirect:/");
         } else {
 
+            CookieHelper.deleteCookie("previousUrl", response);
             return new ModelAndView("updateUser", "user", user);
         }
     }
