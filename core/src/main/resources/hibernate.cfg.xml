@@ -31,6 +31,7 @@
 
         <!--<mapping resource="User.hbm.xml"/>-->
         <mapping class="com.tw.core.entity.User"/>
+        <mapping class="com.tw.core.entity.Admin"/>
 
     </session-factory>
 
