@@ -1,12 +1,13 @@
 package com.tw.core.controller;
 
+import com.tw.core.helper.CookieHelper;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/")
@@ -15,28 +16,39 @@ public class cookieController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getLoginPage(){
+    public ModelAndView getLoginPage(HttpServletRequest request){
 
-        ModelAndView modelAndView = new ModelAndView();
+        if(CookieHelper.getCookieValue("currentUser", request) == null){
 
-        modelAndView.setViewName("login");
-        return modelAndView;
+            return new ModelAndView("login", "loginFailMessage", "");
+        } else {
+
+            return new ModelAndView("redirect:/users/");
+        }
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam String name,
-                              @RequestParam String password){
-
+                              @RequestParam String password,
+                              HttpServletResponse response){
 
         if(userService.verifyUserInfo(name, password)) {
-            //true;
-        } else {
-            //false，弹框
-        };
-        ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("login");
-        return modelAndView;
+            CookieHelper.saveCookie("currentUser", name, response);
+            return new ModelAndView("redirect:/users/");
+        } else {
+
+//            return new ModelAndView("login", "loginFailMessage", "Incorrect name and password,please enter again!");
+            return new ModelAndView("redirect:/");
+        }
     }
 
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpServletResponse response){
+
+        CookieHelper.deleteCookie("currentUser", response);
+        return new ModelAndView("redirect:/");
+//        return new ModelAndView("login", "loginFailMessage", "Please Login");
+
+    }
 }
