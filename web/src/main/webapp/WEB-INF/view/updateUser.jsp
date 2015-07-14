@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="jumbotron">
-        <div class="container">
-            <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
+            <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -28,11 +28,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">login</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/web/logout">Logout</a></li>
                     </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
+        <div class="container">
             <form class="form-horizontal" action="/web/users/update" method="post">
                 <input type="hidden" value="${user.id}" name="id"><br>
                 <div class="form-group">
