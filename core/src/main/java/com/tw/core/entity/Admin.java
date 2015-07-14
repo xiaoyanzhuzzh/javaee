@@ -19,6 +19,12 @@ public class Admin {
     public Admin() {
     }
 
+    public Admin(int id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
