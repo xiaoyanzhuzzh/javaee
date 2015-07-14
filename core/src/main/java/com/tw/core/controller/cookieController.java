@@ -2,7 +2,6 @@ package com.tw.core.controller;
 
 import com.tw.core.helper.CookieHelper;
 import com.tw.core.service.AdminService;
-import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +23,8 @@ public class cookieController {
             return new ModelAndView("login", "loginFailMessage", "");
         } else {
 
-            return new ModelAndView("redirect:/users/");
+            String previous = CookieHelper.getCookieValue("previousUrl", request);
+            return new ModelAndView("redirect:" + previous);
         }
     }
 

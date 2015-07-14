@@ -4,13 +4,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by zhihuizhang on 7/14/15.
- */
 public class CookieHelper {
 
     public static void saveCookie(String cookieName, String value, HttpServletResponse response) {
         Cookie cookie = new Cookie(cookieName, value);
+        cookie.setPath("/");
         response.addCookie(cookie);
     }
 
@@ -34,8 +32,9 @@ public class CookieHelper {
 
     public static void deleteCookie(String cookieName, HttpServletResponse response) {
 
-        Cookie cookie = new Cookie("currentUser", null);
+        Cookie cookie = new Cookie(cookieName, null);
         cookie.setMaxAge(0);
+        cookie.setPath("/");
         response.addCookie(cookie);
     }
 }

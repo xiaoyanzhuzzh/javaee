@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/users")
@@ -16,13 +17,15 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAllUsers(HttpServletRequest request){
+    public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response){
 
         if(CookieHelper.getCookieValue("currentUser", request) == null){
 
+            CookieHelper.saveCookie("previousUrl", "/users/", response);
             return new ModelAndView("redirect:/");
         } else {
 
+            CookieHelper.deleteCookie("previousUrl", response);
             return new ModelAndView("index", "users", userService.getUsers());
         }
     }
