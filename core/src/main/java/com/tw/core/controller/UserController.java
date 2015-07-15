@@ -52,7 +52,6 @@ public class UserController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView getUpdateUserAge(@PathVariable int id){
         User user = userService.getUserById(id);
-、
         return new ModelAndView("updateUser", "user", user);
     }
 
