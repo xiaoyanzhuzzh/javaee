@@ -5,17 +5,22 @@
 <head>
     <title>登陆页面</title>
     <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss"/>
+    <spring:url value="/lib/css/login.css" var="loginCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
+    <link href="${loginCss}" rel="stylesheet"/>
 </head>
 <body>
-    <div class="jumbotron">
+    <div class="jumbotron" id="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
-                    <label>
-                        ${loginFailMessage}
-                    </label>
+                <div class="col-md-12" id="loginTitle">
+                    <h2>用户登录</h2>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
                 <div class="col-md-8">
                     <form class="form-horizontal" action="" method="post">
                         <div class="form-group">

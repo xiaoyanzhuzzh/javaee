@@ -18,7 +18,7 @@ public class cookieController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getLoginPage(){
 
-            return new ModelAndView("login", "loginFailMessage", "");
+            return new ModelAndView("login");
     }
 
     @RequestMapping(value="/", method = RequestMethod.POST)
