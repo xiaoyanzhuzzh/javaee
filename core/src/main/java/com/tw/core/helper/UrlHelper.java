@@ -11,7 +11,6 @@ public class UrlHelper extends HandlerInterceptorAdapter{
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //1、请求到登录页面 放行
         String loginUrl = "/login";
-        System.out.println("++++++++++++++");
         if(request.getServletPath().startsWith(loginUrl)) {
             return true;
         }
@@ -27,7 +26,6 @@ public class UrlHelper extends HandlerInterceptorAdapter{
 
         //4、非法请求 即这些请求需要登录后才能访问
         //重定向到登录页面
-        System.out.println(request.getContextPath());
         response.sendRedirect(request.getContextPath() + loginUrl);
         return false;
     }

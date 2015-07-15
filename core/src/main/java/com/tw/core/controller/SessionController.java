@@ -18,6 +18,7 @@ public class SessionController {
 
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public ModelAndView getLoginPage() {
+
         return new ModelAndView("login");
     }
 
@@ -26,19 +27,23 @@ public class SessionController {
                               @RequestParam String password,
                               HttpServletRequest request){
 
-        String url;
+
         if(adminService.verifyAdminInfo(name, password)) {
 
             request.getSession().setAttribute("currentUser", name);
 
-            String previousUrl = CookieHelper.getCookieValue("previousUrl", request);
-            url = previousUrl == null ? "users/" : previousUrl;
-        } else {
-
-            url = "login";
         }
 
-        return new ModelAndView("redirect:/" + url );
+        String url = request.getHeader("referer");
+
+        if(url.equals("http://localhost:8080/web/login")) {
+
+            url = "/users/";
+            return new ModelAndView("redirect:" + url);
+        } else {
+
+        return new ModelAndView("redirect:" + url);
+        }
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

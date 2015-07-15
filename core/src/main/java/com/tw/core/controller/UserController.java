@@ -19,8 +19,6 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllUsers(HttpServletRequest request){
 
-        System.out.println(request.getHeader("referer"));
-
         return new ModelAndView("index", "users", userService.getUsers());
     }
 
