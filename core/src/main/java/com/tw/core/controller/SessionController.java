@@ -12,17 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/")
 public class SessionController {
     @Autowired
     private AdminService adminService;
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(value="/login", method=RequestMethod.GET)
     public ModelAndView getLoginPage() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam String name,
                               @RequestParam String password,
                               HttpServletRequest request){
@@ -36,7 +35,7 @@ public class SessionController {
             url = previousUrl == null ? "users/" : previousUrl;
         } else {
 
-            url = "/";
+            url = "login";
         }
 
         return new ModelAndView("redirect:/" + url );
@@ -46,6 +45,6 @@ public class SessionController {
     public ModelAndView logout(HttpServletRequest request){
 
         request.getSession().removeAttribute("currentUser");
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/login");
     }
 }
