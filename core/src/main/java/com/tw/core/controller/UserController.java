@@ -17,17 +17,11 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView getAllUsers(HttpServletRequest request){
 
-        if(request.getSession().getAttribute("currentUser") == null){
+        System.out.println(request.getHeader("referer"));
 
-            CookieHelper.saveCookie("previousUrl", "users/", response);
-            return new ModelAndView("redirect:/");
-        } else {
-
-            CookieHelper.deleteCookie("previousUrl", response);
-            return new ModelAndView("index", "users", userService.getUsers());
-        }
+        return new ModelAndView("index", "users", userService.getUsers());
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
