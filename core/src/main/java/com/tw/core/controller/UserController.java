@@ -27,15 +27,15 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView getCreateUserPage(HttpServletRequest request, HttpServletResponse response){
 
-        if(request.getSession().getAttribute("currentUser") == null){
+//        if(request.getSession().getAttribute("currentUser") == null){
+//
+//            CookieHelper.saveCookie("previousUrl", "users/create", response);
+//            return new ModelAndView("redirect:/");
+//        } else {
 
-            CookieHelper.saveCookie("previousUrl", "users/create", response);
-            return new ModelAndView("redirect:/");
-        } else {
-
-            CookieHelper.deleteCookie("previousUrl", response);
+//            CookieHelper.deleteCookie("previousUrl", response);
             return new ModelAndView("createUser");
-        }
+//        }
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
