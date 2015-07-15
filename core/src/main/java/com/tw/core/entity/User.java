@@ -22,15 +22,28 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     public User() {
     }
 
-    public User(int id, String name, String gender, int age, String email) {
+    public User(int id, String name, String gender, int age, String email, String password) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.email = email;
+        this.password = password;
+    }
+
+    public User(String name, String gender, int age, String email, String password) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+
     }
 
     public void setId(int id) {
@@ -53,12 +66,8 @@ public class User {
         this.email = email;
     }
 
-    public User(String name, String gender, int age, String email) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.email = email;
-
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId(){
@@ -79,6 +88,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override

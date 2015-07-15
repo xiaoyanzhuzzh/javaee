@@ -1,8 +1,8 @@
 package com.tw.core.dao;
 
 import com.tw.core.entity.User;
+import com.tw.core.helper.EncryptionHelper;
 import com.tw.core.util.HibernateUtil;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -70,7 +70,7 @@ public class UserDao {
         Query query = session.createQuery(hql);
 
         query.setString(0, name);
-        query.setString(1, password);
+        query.setString(1, EncryptionHelper.md5(password));
 
         List<User> users = query.list();
         if(users.size() == 1) {
@@ -81,7 +81,8 @@ public class UserDao {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        Boolean result = new UserDao().verifyUserInfo("张志慧", "123456");
-//    }
+    public static void main(String[] args) {
+        User user = new User(1, "张志慧", "female", 23, "zhzhang@outllok.com", EncryptionHelper.md5("123456"));
+        new UserDao().updateUser(user);
+    }
 }

@@ -2,6 +2,7 @@ package com.tw.core.controller;
 
 import com.tw.core.helper.CookieHelper;
 import com.tw.core.service.AdminService;
+import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class SessionController {
+//    @Autowired
+//    private AdminService adminService;
     @Autowired
-    private AdminService adminService;
+    private UserService userService;
 
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public ModelAndView getLoginPage() {
@@ -28,7 +31,7 @@ public class SessionController {
                               HttpServletRequest request){
 
 
-        if(adminService.verifyAdminInfo(name, password)) {
+        if(userService.verifyUserInfo(name, password)) {
 
             request.getSession().setAttribute("currentUser", name);
         }

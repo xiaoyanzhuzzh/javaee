@@ -4,9 +4,7 @@
 <head>
     <title>添加新用户</title>
     <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss" />
-    <spring:url value="/lib/css/createUser.css" var="createUserCss" />
     <link href="${bootstrapCss}" rel="stylesheet" />
-    <link href="${createUserCss}" rel="stylesheet" />
 </head>
 <body>
     <div class="jumbotron">
@@ -37,6 +35,12 @@
                     <label for="name" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">
