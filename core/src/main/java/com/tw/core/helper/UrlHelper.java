@@ -18,7 +18,6 @@ public class UrlHelper extends HandlerInterceptorAdapter{
         //2、TODO 比如退出、首页等页面无需登录，即此处要放行 允许游客的请求
 
         //3、如果用户已经登录 放行
-        System.out.println(request.getSession().getAttribute("currentUser"));
         if(request.getSession().getAttribute("currentUser") != null) {
             //更好的实现方式的使用cookie
             return true;

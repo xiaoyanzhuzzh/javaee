@@ -31,7 +31,6 @@ public class SessionController {
         if(adminService.verifyAdminInfo(name, password)) {
 
             request.getSession().setAttribute("currentUser", name);
-
         }
 
         String url = request.getHeader("referer");

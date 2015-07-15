@@ -1,14 +1,12 @@
 package com.tw.core.controller;
 
 import com.tw.core.entity.User;
-import com.tw.core.helper.CookieHelper;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/users")
