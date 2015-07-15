@@ -19,7 +19,7 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response){
 
-        if(CookieHelper.getCookieValue("currentUser", request) == null){
+        if(request.getSession().getAttribute("currentUser") == null){
 
             CookieHelper.saveCookie("previousUrl", "users/", response);
             return new ModelAndView("redirect:/");
@@ -33,7 +33,7 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView getCreateUserPage(HttpServletRequest request, HttpServletResponse response){
 
-        if(CookieHelper.getCookieValue("currentUser", request) == null){
+        if(request.getSession().getAttribute("currentUser") == null){
 
             CookieHelper.saveCookie("previousUrl", "users/create", response);
             return new ModelAndView("redirect:/");
@@ -69,7 +69,7 @@ public class UserController {
                                          HttpServletResponse response){
         User user = userService.getUserById(id);
 
-        if(CookieHelper.getCookieValue("currentUser", request) == null){
+        if(request.getSession().getAttribute("currentUser") == null){
 
             CookieHelper.saveCookie("previousUrl", "users/update/" + id, response);
             return new ModelAndView("redirect:/");
@@ -78,6 +78,7 @@ public class UserController {
             CookieHelper.deleteCookie("previousUrl", response);
             return new ModelAndView("updateUser", "user", user);
         }
+
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
