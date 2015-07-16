@@ -1,7 +1,5 @@
 package com.tw.core.controller;
 
-import com.tw.core.helper.CookieHelper;
-import com.tw.core.service.AdminService;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
